@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Sample Application</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<script>
+    
+    function emitStart(){
+        var iframe = document.getElementById('iframe1');
+        var leadid = document.getElementById('leadid').value;
+        console.log(leadid);
+        var data = {
+            event: 'startrecording',
+            leadid: leadid
+        }
+        iframe.contentWindow.postMessage(data, '*');
+    }
+    function emitEnd(){
+        var iframe = document.getElementById('iframe1');
+        iframe.contentWindow.postMessage('stoprecording', '*');
+    }
+    function sendLeadToSpeechApi(){
+        var iframe = document.getElementById('iframe1');
+        iframe.contentWindow.postMessage(leadid, '*');
+    }
+</script>
+<body>
+<div class="container">
+    <div class="page-header">
+      <h1><span class="glyphicon glyphicon-record"></span> Sample Application</h1>
+    </div>
+    <div>
+        <input type="text" name="FirstName" id="leadid" value="">
+    </div>
+    <iframe id="iframe1" src="https://10.0.9.96:9191/"></iframe>
+    <button class="btn btn-primary" id="start-rec-btn" onclick="emitStart();">Start Recording</button>
+    <button class="btn btn-primary" id="stop-rec-btn" onclick="emitEnd();">Stop Recording</button>
+</div>
+</body>
+</html> 
