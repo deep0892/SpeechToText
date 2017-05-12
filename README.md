@@ -1,11 +1,7 @@
-AudioStreamer
-=============
-
-HTML5 realtime audio streaming to nodejs
-----------------------------------------
+AudioStreamer to Server && Google Speech Api 
+=============================================
 
 Stream audio from the microphone connected to your browser to a node js server.
-You can change the encoding of the saved audio from "WAV" to "MP3" in ```config.json```
 
 install dependencies:
 
@@ -13,6 +9,8 @@ install dependencies:
    
 run:
 
+    export GCLOUD_PROJECT= <your google speech project name>
+    export GOOGLE_APPLICATION_CREDENTIALS= <your app credential location>
     npm start
     
     
